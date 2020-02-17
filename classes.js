@@ -122,8 +122,44 @@ const getReceipt = (labels, prices, discounts) => {
     p.applyDiscount(discounts[i]);
     return p;
   });
-  console.log(products);
+  //console.log(products);
   let receipt = new Receipt(products);
-  console.log(`Total: ${receipt.calcTotal()}`);
+  //console.log(`Total: ${receipt.calcTotal()}`);
+  let receiptSum = receipt.calcTotal();
+  // advanced print
+  const wordLen = Math.max(
+    5,
+    products.reduce(
+      (acc, curr) => (acc < curr.name.length ? curr.name.length : acc),
+      0
+    )
+  );
+  const priceLen =
+    Math.max(
+      receiptSum.toFixed(2).length,
+      products.reduce(
+        (acc, curr) =>
+          acc < curr.price.toFixed(2).length
+            ? curr.price.toFixed(2).length
+            : acc,
+        0
+      )
+    ) + 1; // plus one for the $-sign
+  console.log("-".padEnd(13 + wordLen, "-"));
+  products.forEach(e =>
+    console.log(
+      `| ${e.name.padEnd(wordLen, " ")} | ${("$" + e.price.toFixed(2)).padStart(
+        priceLen,
+        " "
+      )} |`
+    )
+  );
+  console.log("-".padEnd(13 + wordLen, "-"));
+  console.log(
+    `| ${"Total".padEnd(wordLen, " ")} | ${(
+      "$" + receiptSum.toFixed(2)
+    ).padStart(priceLen, " ")} |`
+  );
+  console.log("-".padEnd(13 + wordLen, "-"));
 };
 getReceipt(labels, prices, discounts);
