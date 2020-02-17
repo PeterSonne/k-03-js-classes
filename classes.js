@@ -73,3 +73,22 @@ const makeEmployees = (names, jobs) => {
   });
 };
 console.log(makeEmployees(names, jobs));
+
+// #30306
+
+let cities = ["Bangkok", "Tokyo", "New York", "Rome", "Berlin"];
+
+class Traveler {
+  constructor(name) {
+    this.name = name;
+    this.city = cities[0];
+  }
+  pickRandom() {
+    this.city = cities[Math.floor(Math.random() * cities.length)];
+    return `${this.name} is going to ${this.city}`;
+  }
+}
+let traveler = new Traveler("Tony");
+console.log(traveler.pickRandom());
+console.log(traveler.pickRandom());
+console.log(traveler.pickRandom());
