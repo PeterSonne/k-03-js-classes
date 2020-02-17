@@ -30,8 +30,10 @@ class Car {
     this.color = color;
   }
 }
-
-let car = new Car("Ford", "Focus", "black");
+const buildCar = (brand, model, color) => {
+  return new Car(brand, model, color);
+};
+let car = buildCar("Ford", "Focus", "black");
 console.log(car);
 
 // #30304
