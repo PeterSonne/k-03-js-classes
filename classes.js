@@ -92,3 +92,38 @@ let traveler = new Traveler("Tony");
 console.log(traveler.pickRandom());
 console.log(traveler.pickRandom());
 console.log(traveler.pickRandom());
+
+// #30307
+
+let labels = ["apples", "bananas", "bread", "cookies", "broccoli", "onions"];
+let prices = [20, 12, 24, 53, 32, 15];
+let discounts = [0, 0, 10, 25, 0, 5];
+
+class Product {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+  applyDiscount(discount) {
+    this.price *= 1 - discount / 100;
+  }
+}
+class Receipt {
+  constructor(products) {
+    this.products = products;
+  }
+  calcTotal() {
+    return this.products.reduce((acc, curr) => acc + curr.price, 0);
+  }
+}
+const getReceipt = (labels, prices, discounts) => {
+  let products = labels.map((e, i) => {
+    let p = new Product(e, prices[i]);
+    p.applyDiscount(discounts[i]);
+    return p;
+  });
+  console.log(products);
+  let receipt = new Receipt(products);
+  console.log(`Total: ${receipt.calcTotal()}`);
+};
+getReceipt(labels, prices, discounts);
