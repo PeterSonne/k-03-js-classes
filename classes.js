@@ -44,9 +44,9 @@ class Animal {
   }
   speak() {
     console.log(
-      this.name +
-        " " +
-        (this.verb ? this.verb + "s" : " says '" + this.sound + "'")
+      `${this.name} ${
+        this.verb ? this.verb + "s" : " says '" + this.sound + "'"
+      }`
     );
   }
 }
