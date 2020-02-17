@@ -55,3 +55,21 @@ new Animal("Cat", "meow").speak();
 new Animal("Cow", null, "moo").speak();
 new Animal("Lion", "roar", null).speak();
 new Animal("Duck", null, "quack").speak();
+
+// #30305
+
+let names = ["Alice", "Bernard", "Catherine", "David"];
+let jobs = ["Accountant", "Biz Manager", "Cleaner", "Director"];
+
+class Employee {
+  constructor(name, job) {
+    this.name = name;
+    this.job = job;
+  }
+}
+const makeEmployees = (names, jobs) => {
+  return names.map((e, i) => {
+    return new Employee(e, jobs[i]);
+  });
+};
+console.log(makeEmployees(names, jobs));
