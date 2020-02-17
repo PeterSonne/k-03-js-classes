@@ -20,3 +20,16 @@ class Student {
 
 let student = new Student("John", "Smith", 18);
 console.log(student);
+
+// #30303
+
+class Car {
+  constructor(brand, model, color) {
+    this.brand = brand;
+    this.model = model;
+    this.color = color;
+  }
+}
+
+let car = new Car("Ford", "Focus", "black");
+console.log(car);
